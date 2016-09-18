@@ -1,6 +1,8 @@
 defmodule Domain.User do
   @moduledoc false
 
+  alias Comeonin.Bcrypt
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -41,7 +43,7 @@ defmodule Domain.User do
     case password do
       x when is_bitstring(x) ->
         changeset
-        |> put_change(:password_hash, Comeonin.Bcrypt.hashpwsalt(password))
+        |> put_change(:password_hash, Bcrypt.hashpwsalt(password))
         |> put_change(:password, nil)
       _                      ->
         changeset

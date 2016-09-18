@@ -1,4 +1,4 @@
-defmodule Showcase01.Web do
+defmodule Web do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -9,21 +9,21 @@ defmodule Showcase01.Web do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(Showcase01.Web.Endpoint, []),
-      # Start your own worker by calling: Showcase01.Web.Worker.start_link(arg1, arg2, arg3)
-      # worker(Showcase01.Web.Worker, [arg1, arg2, arg3]),
+      supervisor(Web.Endpoint, []),
+      # Start your own worker by calling: Web.Worker.start_link(arg1, arg2, arg3)
+      # worker(Web.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Showcase01.Web.Supervisor]
+    opts = [strategy: :one_for_one, name: Web.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Showcase01.Web.Endpoint.config_change(changed, removed)
+    Web.Endpoint.config_change(changed, removed)
     :ok
   end
 end

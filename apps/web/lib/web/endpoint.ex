@@ -1,7 +1,7 @@
-defmodule Showcase01.Web.Endpoint do
+defmodule Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :web
 
-  socket "/socket", Showcase01.Web.UserSocket
+  socket "/socket", Web.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule Showcase01.Web.Endpoint do
     key: "_web_key",
     signing_salt: "yKXql1OH"
 
-  plug Showcase01.Web.Router
+  plug Web.Router
 end

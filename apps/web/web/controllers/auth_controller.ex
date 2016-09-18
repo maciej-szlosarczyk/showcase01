@@ -1,6 +1,6 @@
 defmodule Web.AuthController do
 #  @moduledoc false
-#  user Showcase01.Web, :controller
+#  user Web, :controller
 #
 #  alias Guardian.Plug
 #

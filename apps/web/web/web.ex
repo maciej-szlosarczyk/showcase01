@@ -1,12 +1,12 @@
-defmodule Showcase01.Web.Web do
+defmodule Web.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Showcase01.Web.Web, :controller
-      use Showcase01.Web.Web, :view
+      use Web.Web, :controller
+      use Web.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -24,16 +24,16 @@ defmodule Showcase01.Web.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: Showcase01.Web
+      use Phoenix.Controller, namespace: Web
 
-      import Showcase01.Web.Router.Helpers
-      import Showcase01.Web.Gettext
+      import Web.Router.Helpers
+      import Web.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates", namespace: Showcase01.Web
+      use Phoenix.View, root: "web/templates", namespace: Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -41,9 +41,9 @@ defmodule Showcase01.Web.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Showcase01.Web.Router.Helpers
-      import Showcase01.Web.ErrorHelpers
-      import Showcase01.Web.Gettext
+      import Web.Router.Helpers
+      import Web.ErrorHelpers
+      import Web.Gettext
     end
   end
 
@@ -56,7 +56,7 @@ defmodule Showcase01.Web.Web do
   def channel do
     quote do
       use Phoenix.Channel
-      import Showcase01.Web.Gettext
+      import Web.Gettext
     end
   end
 

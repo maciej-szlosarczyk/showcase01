@@ -1,5 +1,5 @@
-defmodule Showcase01.Web.ErrorView do
-  use Showcase01.Web.Web, :view
+defmodule Web.ErrorView do
+  use Web.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

@@ -1,3 +1,3 @@
-defmodule Showcase01.Web.LayoutViewTest do
-  use Showcase01.Web.ConnCase, async: true
+defmodule Web.LayoutViewTest do
+  use Web.ConnCase, async: true
 end

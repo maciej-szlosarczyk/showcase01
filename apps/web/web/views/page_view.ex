@@ -1,3 +1,3 @@
-defmodule Showcase01.Web.PageView do
-  use Showcase01.Web.Web, :view
+defmodule Web.PageView do
+  use Web.Web, :view
 end

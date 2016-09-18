@@ -1,4 +1,4 @@
-# Showcase01.Web
+# Web
 
 To start your Phoenix app:
 

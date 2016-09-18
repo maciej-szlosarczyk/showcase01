@@ -1,5 +1,5 @@
-defmodule Showcase01.Web.PageControllerTest do
-  use Showcase01.Web.ConnCase
+defmodule Web.PageControllerTest do
+  use Web.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

@@ -1,11 +1,13 @@
 defmodule UsersTest do
   @moduledoc false
 
+  alias Domain.{Users, Repo}
+  alias Ecto.Adapters.SQL.Sandbox
+
   use ExUnit.Case, async: true
-  alias Domain.{Users}
 
   setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Domain.Repo)
+    :ok = Sandbox.checkout(Repo)
   end
 
   @valid_attrs %{email: "admin@test.com", first_name: "Admin",

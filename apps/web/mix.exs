@@ -1,4 +1,4 @@
-defmodule Showcase01.Web.Mixfile do
+defmodule Web.Mixfile do
   use Mix.Project
 
   def project do
@@ -20,7 +20,7 @@ defmodule Showcase01.Web.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Showcase01.Web, []},
+    [mod: {Web, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext]]
   end
 

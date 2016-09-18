@@ -1,5 +1,5 @@
-defmodule Showcase01.Web.Router do
-  use Showcase01.Web.Web, :router
+defmodule Web.Router do
+  use Web.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule Showcase01.Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Showcase01.Web do
+  scope "/", Web do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Showcase01.Web do
+  # scope "/api", Web do
   #   pipe_through :api
   # end
 end

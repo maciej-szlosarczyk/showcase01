@@ -1,3 +1,3 @@
-defmodule Showcase01.Web.LayoutView do
-  use Showcase01.Web.Web, :view
+defmodule Web.LayoutView do
+  use Web.Web, :view
 end

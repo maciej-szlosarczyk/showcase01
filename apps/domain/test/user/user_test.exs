@@ -1,10 +1,13 @@
 defmodule UserTest do
   @moduledoc false
 
+  alias Domain.Repo
+  alias Ecto.Adapters.SQL.Sandbox
+
   use ExUnit.Case, async: true
 
   setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Domain.Repo)
+    :ok = Sandbox.checkout(Repo)
   end
 
   alias Domain.User

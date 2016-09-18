@@ -7,14 +7,14 @@ use Mix.Config
 
 # General application configuration
 config :web,
-  namespace: Showcase01.Web
+  namespace: Web
 
 # Configures the endpoint
-config :web, Showcase01.Web.Endpoint,
+config :web, Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "kCiS1yPLGDsbofl91aFym4bwOr55jiCRQoc0cJvnAjSOcX02fIS2ybTNjXeYWtS2",
-  render_errors: [view: Showcase01.Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Showcase01.Web.PubSub,
+  render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Web.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
