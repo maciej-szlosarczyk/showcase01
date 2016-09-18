@@ -4,7 +4,7 @@ defmodule Domain.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "user" do
+  schema "users" do
     field :first_name, :string, null: false
     field :last_name, :string, null: false
     field :email, :string, null: false
@@ -28,7 +28,6 @@ defmodule Domain.User do
   def update_changeset(user, params \\ %{}) do
     user
     |> cast(params, [:first_name, :last_name, :email, :password])
-    |> validate_required([:first_name, :last_name, :email, :password])
     |> validate_length(:password, min: 8)
     |> validate_confirmation(:password, message: "Passwords do not match")
     |> validate_format(:email, ~r/@/)

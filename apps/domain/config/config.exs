@@ -29,12 +29,11 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 
-config :domain, ecto_repos: [Domain.Repo]
+config :domain,
+  ecto_repos: [Domain.Repo]
 
-config :domain, Domain.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  database: "showcase01_dev",
-  username: "postgres",
-  password: "postgres",
-  pool_size: 10,
-  host: "localhost"
+config :logger, :console,
+  format: "$time $metadata[$level] $message\n",
+  metadata: [:request_id]
+
+import_config "#{Mix.env}.exs"

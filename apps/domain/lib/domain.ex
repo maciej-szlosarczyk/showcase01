@@ -10,6 +10,7 @@ defmodule Domain do
     children = [
       # Starts a worker by calling: Domain.Worker.start_link(arg1, arg2, arg3)
       # worker(Domain.Worker, [arg1, arg2, arg3]),
+      supervisor(Domain.Repo, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

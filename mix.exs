@@ -26,4 +26,8 @@ defmodule Showcase01.Mixfile do
     [{:credo, "~> 0.4.11"},
      {:coverex, "~> 1.4.10", only: :test}]
   end
+
+  defp aliases do
+    ["test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+  end
 end
