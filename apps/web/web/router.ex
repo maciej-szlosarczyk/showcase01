@@ -9,17 +9,30 @@ defmodule Web.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.EnsureAuthenticated,
+      handler: Web.TokenController
+    plug Guardian.Plug.LoadResource
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", Web do
-    pipe_through :browser # Use the default browser stack
+      pipe_through :browser
 
+      get "/", PageController, :index
+      resources "/sessions", SessionController, only: [:new, :create, :delete]
+    end
+
+  scope "/", Web do
+    pipe_through [:browser, :browser_session] #Only for authenticated
     get "/", PageController, :index
-
     get "/users", UserController, :index
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", Web do

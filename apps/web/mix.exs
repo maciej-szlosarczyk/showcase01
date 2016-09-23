@@ -40,6 +40,10 @@ defmodule Web.Mixfile do
      {:cowboy, "~> 1.0"},
 
      # Domain app
-     {:domain, in_umbrella: true}]
+     {:domain, in_umbrella: true},
+
+     # Sessions and such
+     {:guardian, "~> 0.12.0"}, # Session management
+     {:canary, "~> 1.0.0"}] # Permissions]
   end
 end

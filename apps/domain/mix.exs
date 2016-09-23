@@ -41,8 +41,6 @@ defmodule Domain.Mixfile do
      {:postgrex, "~> 0.12.0"},
 
      # authentication and authorization
-     {:guardian, "~> 0.12.0"}, # Session management
-     {:comeonin, "~> 2.5"}, # Password hashing
-     {:canary, "~> 1.0.0"}] # Permissions]
+     {:comeonin, "~> 2.5"}] # Password hashing
   end
 end
