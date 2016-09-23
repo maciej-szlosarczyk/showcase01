@@ -10,6 +10,7 @@ defmodule Web.UserController do
   end
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    user = Users.build_user
+    render(conn, "new.html", user: user)
   end
 end

@@ -7,7 +7,15 @@ defmodule Domain.Users do
     Repo.all(User)
   end
 
-  # Possibly this one should be more general
+  # This is a bit of duplication of work, but is required for forms.
+  def build_user do
+    User.create_changeset(%User{})
+  end
+
+  def update_user do
+    User.update_changeset(%User{})
+  end
+
   def find_by_params(params) do
     Repo.get_by!(User, params)
   end

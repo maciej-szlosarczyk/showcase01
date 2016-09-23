@@ -59,5 +59,19 @@ defmodule UsersTest do
 
       refute result.valid?
     end
-end
+  end
+
+  describe "get changesets" do
+    test "build_ changeset" do
+      changeset = Users.build_user
+
+      assert changeset.required == [:first_name, :last_name, :email, :password]
+    end
+
+    test "update_ changeset" do
+      changeset = Users.update_user
+
+      assert changeset.required == []
+    end
+  end
 end
