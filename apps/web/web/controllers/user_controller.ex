@@ -15,15 +15,15 @@ defmodule Web.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    IO.inspect user_params
-
     case Users.create_user!(user_params) do
-      {:ok, struct} ->
+      {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully")
         |> redirect(to: user_path(conn, :index))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
+      true ->
+        IO.puts "Something went wrong"
     end
   end
 end
