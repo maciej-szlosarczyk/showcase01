@@ -21,15 +21,17 @@ defmodule Web.Router do
   end
 
   scope "/", Web do
-      pipe_through :browser
+    pipe_through :browser
 
-      get "/", PageController, :index
-      resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/", PageController, :index
+    resources "/users", UserController, only: [:new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
     end
 
   scope "/", Web do
-    pipe_through [:browser, :browser_session] #Only for authenticated
-    get "/", PageController, :index
+    pipe_through [:browser,
+                  :browser_session] #Only for authenticated
+
     get "/users", UserController, :index
   end
 

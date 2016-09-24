@@ -10,7 +10,20 @@ defmodule Web.UserController do
   end
 
   def new(conn, _params) do
-    user = Users.build_user
-    render(conn, "new.html", user: user)
+    changeset = Users.build_user
+    render(conn, "new.html", changeset: changeset)
+  end
+
+  def create(conn, %{"user" => user_params}) do
+    IO.inspect user_params
+
+    case Users.create_user!(user_params) do
+      {:ok, struct} ->
+        conn
+        |> put_flash(:info, "User created successfully")
+        |> redirect(to: user_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
   end
 end

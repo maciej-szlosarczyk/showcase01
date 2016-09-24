@@ -23,9 +23,9 @@ defmodule Domain.Users do
   def create_user!(params) do
     changeset = User.create_changeset(%User{}, params)
 
-    case Repo.insert(changeset) do
-      {:ok, struct}       -> struct
-      {:error, changeset} -> changeset
+    case changeset.valid? do
+      true  -> Repo.insert(changeset)
+      false -> {:error, changeset}
     end
   end
 
@@ -34,8 +34,8 @@ defmodule Domain.Users do
     changeset = User.update_changeset(user, params)
 
     case Repo.update(changeset) do
-     {:ok, struct}       -> struct
-     {:error, changeset} -> changeset
+     {:ok, struct}       -> {:ok, struct}
+     {:error, changeset} -> {:error, changeset}
     end
   end
 

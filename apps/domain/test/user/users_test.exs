@@ -17,9 +17,10 @@ defmodule UsersTest do
 
   describe "Success scenarios" do
     test "create a User with valid params" do
-      user = Users.create_user!(@valid_attrs)
+      {status, data} = Users.create_user!(@valid_attrs)
 
-      assert user.id
+      assert status == :ok
+      assert data.id
     end
 
     test "get a user by params" do
@@ -30,7 +31,7 @@ defmodule UsersTest do
     end
 
     test "change a user sucessfully" do
-      user = Users.create_user!(@valid_attrs)
+      {_, user} = Users.create_user!(@valid_attrs)
       Users.edit_user(user.id, %{email: "new-email@email.com"})
 
       edited_user = Users.find_by_params(first_name: @valid_attrs.first_name)
@@ -39,7 +40,7 @@ defmodule UsersTest do
     end
 
     test "delete a user successfully" do
-      user = Users.create_user!(@valid_attrs)
+      {_, user} = Users.create_user!(@valid_attrs)
       Users.delete_user(user.id)
 
       assert length(Users.all) == 0
@@ -48,16 +49,18 @@ defmodule UsersTest do
 
   describe "Failure scenarios" do
     test "fail on user creation" do
-      result = Users.create_user!(%{email: "I'm wrong email"})
+      {status, data} = Users.create_user!(%{email: "I'm wrong email"})
 
-      refute result.valid?
+      refute status == :ok
+      refute data.valid?
     end
 
     test "fail on user update" do
-      user = Users.create_user!(@valid_attrs)
-      result = Users.edit_user(user.id, %{email: "I'm a wrong email"})
+      {_, user} = Users.create_user!(@valid_attrs)
+      {status, data} = Users.edit_user(user.id, %{email: "I'm a wrong email"})
 
-      refute result.valid?
+      refute status == :ok
+      refute data.valid?
     end
   end
 
