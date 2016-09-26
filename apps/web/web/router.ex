@@ -32,7 +32,7 @@ defmodule Web.Router do
     pipe_through [:browser,
                   :browser_session] #Only for authenticated
 
-    get "/users", UserController, :index
+    resources "/users", UserController, except: [:new, :create]
   end
 
 

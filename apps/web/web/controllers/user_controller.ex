@@ -9,6 +9,11 @@ defmodule Web.UserController do
     render(conn, "index.html", users: users)
   end
 
+  def show(conn, %{"id" => id}) do
+    user = Users.find_by_params(id: id)
+    render(conn, "show.html", user: user)
+  end
+
   def new(conn, _params) do
     changeset = Users.build_user
     render(conn, "new.html", changeset: changeset)

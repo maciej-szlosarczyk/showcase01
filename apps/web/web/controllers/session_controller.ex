@@ -10,7 +10,7 @@ defmodule Web.SessionController do
     render conn, "new.html"
   end
 
-  def create(conn, %{session: %{email: email, password: password}}) do
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
     case AuthController.sign_in_by_email_and_password(conn, email, password) do
       {:ok, conn} ->
         signed_in_user = Plug.current_resource(conn)
