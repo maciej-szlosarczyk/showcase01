@@ -4,6 +4,8 @@ defmodule UsersTest do
   alias Domain.{Users, Repo}
   alias Ecto.Adapters.SQL.Sandbox
 
+  import Ecto.Query, only: [from: 2]
+
   use ExUnit.Case, async: true
 
   setup do
@@ -75,6 +77,19 @@ defmodule UsersTest do
       changeset = Users.update_user
 
       assert changeset.required == []
+    end
+  end
+
+  describe "query DSL language" do
+    test "build_query" do
+      Users.create_user!(@valid_attrs)
+      query = from u in "users",
+              where: not(is_nil(u.id)),
+              select: u.email
+
+      result = Users.filter_by_params(query)
+
+      assert result == [@valid_attrs.email]
     end
   end
 end

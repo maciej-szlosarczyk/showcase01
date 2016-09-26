@@ -44,6 +44,7 @@ defmodule Web.Web do
       import Web.Router.Helpers
       import Web.ErrorHelpers
       import Web.Gettext
+      import Web.AuthHelpers
     end
   end
 

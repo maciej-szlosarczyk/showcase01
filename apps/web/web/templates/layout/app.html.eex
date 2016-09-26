@@ -18,6 +18,9 @@
           <ul class="nav nav-pills pull-right">
             <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
           </ul>
+          <br>
+          <%= render "sign_in_sign_out.html", conn: @conn %>
+          <br>
         </nav>
         <span class="logo"></span>
       </header>
