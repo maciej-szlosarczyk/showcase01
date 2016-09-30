@@ -27,27 +27,27 @@ defmodule Domain.Order do
 
   def create_changeset(order, params \\ %{}) do
     order
-    |> cast(params, [:base_currency, :target_currency, :amount, :end_date])
+    |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
+                    :start_date])
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:target_currency, currency_choices)
+    |> set_start_date
     |> validate_required([:base_currency, :target_currency, :amount, :end_date])
   end
 
   def update_changeset(order, params \\ %{}) do
     order
-    |> cast(params, [:base_currency, :target_currency, :amount, :end_date])
+    |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
+                    :start_date])
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:base_currency, currency_choices)
+    |> set_start_date
     |> validate_required([:base_currency, :target_currency, :amount, :end_date])
   end
 
   def set_start_date(order) do
-    case order.start_date do
-      nil ->
-        order
-        |> put_change(:start_date, Date.cast(Date.utc))
-      _   ->
-        order
-    end
-  end 
+    {date, _} = :calendar.now_to_datetime(:os.timestamp)
+    order
+    |> put_change(:start_date, Date.cast!(date))
+  end
 end

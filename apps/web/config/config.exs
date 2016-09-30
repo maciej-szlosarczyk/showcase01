@@ -24,7 +24,7 @@ config :logger, :console,
 
 config :guardian, Guardian,
   issuer: "Showcase01.Web",
-  ttl: { 2, :days },
+  ttl: {2, :days},
   verify_issuer: true,
   secret_key: "m4BFsHL8XI18/UGO8iP/5u/1XKMIKR36jtesOrs40H/znfMeqpJ+oBGZlWqJO+Wj",
   serializer: Web.GuardianSerializer

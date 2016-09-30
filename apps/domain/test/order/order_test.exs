@@ -31,6 +31,7 @@ defmodule OrderTest do
 
   test "update_changeset with valid attributes" do
     changeset = Order.update_changeset(%Order{}, @valid_attrs)
+    IO.inspect changeset
     assert changeset.valid?
   end
 
