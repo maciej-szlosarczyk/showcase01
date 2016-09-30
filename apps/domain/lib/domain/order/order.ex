@@ -38,6 +38,7 @@ defmodule Domain.Order do
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date])
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:base_currency, currency_choices)
+    |> validate_required([:base_currency, :target_currency, :amount, :end_date])
   end
 
   def set_start_date(order) do
