@@ -28,21 +28,23 @@ defmodule Domain.Order do
   def create_changeset(order, params \\ %{}) do
     order
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
-                    :start_date])
+                    :start_date, :user_id])
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:target_currency, currency_choices)
     |> set_start_date
-    |> validate_required([:base_currency, :target_currency, :amount, :end_date])
+    |> validate_required([:base_currency, :target_currency, :amount, :end_date,
+                         :user_id])
   end
 
   def update_changeset(order, params \\ %{}) do
     order
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
-                    :start_date])
+                    :start_date, :user_id])
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:base_currency, currency_choices)
     |> set_start_date
-    |> validate_required([:base_currency, :target_currency, :amount, :end_date])
+    |> validate_required([:base_currency, :target_currency, :amount, :end_date,
+                         :user_id])
   end
 
   def set_start_date(order) do
