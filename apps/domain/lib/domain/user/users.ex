@@ -22,7 +22,7 @@ defmodule Domain.Users do
   end
 
   def filter_by_params(params) do
-    Repo.all(Order, params)
+    Repo.all(User, params)
   end
 
   def create_user!(params) do

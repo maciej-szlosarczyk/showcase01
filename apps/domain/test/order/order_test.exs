@@ -16,7 +16,7 @@ defmodule OrderTest do
   {new_date, _} = :calendar.now_to_datetime(:os.timestamp)
   
   @valid_attrs %{base_currency: "EUR", target_currency: "GBP", amount: 1200,
-                 end_date: Date.cast!(new_date)}
+                 end_date: Date.cast!(new_date), user_id: 1}
   @invalid_attrs %{some_var: "I'm some variable, don't mind me."}
 
   test "create_changeset with valid attributes" do
@@ -31,7 +31,6 @@ defmodule OrderTest do
 
   test "update_changeset with valid attributes" do
     changeset = Order.update_changeset(%Order{}, @valid_attrs)
-    IO.inspect changeset
     assert changeset.valid?
   end
 

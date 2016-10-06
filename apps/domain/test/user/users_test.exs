@@ -88,7 +88,7 @@ defmodule UsersTest do
               select: u.email
 
       result = Users.filter_by_params(query)
-
+      IO.inspect query
       assert result == [@valid_attrs.email]
     end
   end
