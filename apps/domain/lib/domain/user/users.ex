@@ -2,13 +2,11 @@ defmodule Domain.Users do
   @moduledoc false
 
   alias Domain.{User, Repo}
-  import Ecto.Query, only: [from: 2]
-
+  
   def all do
     Repo.all(User)
   end
 
-  # This is a bit of duplication of work, but is required for forms.
   def build_user do
     User.create_changeset(%User{})
   end
@@ -20,11 +18,7 @@ defmodule Domain.Users do
   def find_by_params(params) do
     Repo.get_by!(User, params)
   end
-
-  def filter_by_params(params) do
-    Repo.all(User, params)
-  end
-
+ 
   def create_user!(params) do
     changeset = User.create_changeset(%User{}, params)
 

@@ -20,8 +20,12 @@ defmodule Domain.Orders do
     Repo.get_by!(Order, params)
   end
 
-  def filter_by_params(params) do
-    Repo.all(Order, params)
+  def filter_by_user(user_id) do
+    orders =
+      from o in Order,
+      where: o.user_id == ^user_id
+
+    Repo.all(orders)
   end
 
   def create_order!(params) do

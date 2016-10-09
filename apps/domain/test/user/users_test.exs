@@ -79,17 +79,4 @@ defmodule UsersTest do
       assert changeset.required == []
     end
   end
-
-  describe "query DSL language" do
-    test "build_query" do
-      Users.create_user!(@valid_attrs)
-      query = from u in "users",
-              where: not(is_nil(u.id)),
-              select: u.email
-
-      result = Users.filter_by_params(query)
-      IO.inspect query
-      assert result == [@valid_attrs.email]
-    end
-  end
 end
