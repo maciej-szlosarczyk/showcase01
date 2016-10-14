@@ -2,7 +2,7 @@ defmodule Domain.Users do
   @moduledoc false
 
   alias Domain.{User, Repo}
-  
+
   def all do
     Repo.all(User)
   end
