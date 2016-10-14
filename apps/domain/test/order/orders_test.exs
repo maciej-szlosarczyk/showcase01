@@ -3,7 +3,7 @@ defmodule OrdersTest do
 
   Code.require_file "test/support/domain_factory.ex"
 
-  alias Domain.{Orders, Repo}
+  alias Domain.{Orders, Repo, Factory}
   alias Ecto.Adapters.SQL.Sandbox
   alias Ecto.Date
 
@@ -21,7 +21,7 @@ defmodule OrdersTest do
   @invalid_attrs %{some_var: "I'm some invalid variable, don't mind me."}
 
   test "create_order!" do
-    user = Domain.Factory.insert(:user)
+    user = Factory.insert(:user)
     new_map = %{@valid_attrs | user_id: user.id}
     {_, order} = Orders.create_order!(new_map)
 
@@ -35,7 +35,7 @@ defmodule OrdersTest do
   end
 
   test "filter_by_user" do
-    user = Domain.Factory.insert(:user)
+    user = Factory.insert(:user)
     new_map = %{@valid_attrs | user_id: user.id}
     {_, order} = Orders.create_order!(new_map)
 

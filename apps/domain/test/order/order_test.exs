@@ -14,7 +14,7 @@ defmodule OrderTest do
   alias Domain.Order
 
   {new_date, _} = :calendar.now_to_datetime(:os.timestamp)
-  
+
   @valid_attrs %{base_currency: "EUR", target_currency: "GBP", amount: 1200,
                  end_date: Date.cast!(new_date), user_id: 1}
   @invalid_attrs %{some_var: "I'm some variable, don't mind me."}

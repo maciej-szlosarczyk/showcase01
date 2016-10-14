@@ -1,6 +1,6 @@
 defmodule Domain.Repo.Migrations.AddPasswordHashToUser do
   @moduledoc false
-  
+
   use Ecto.Migration
 
   def change do
