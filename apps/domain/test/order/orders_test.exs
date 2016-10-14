@@ -6,7 +6,7 @@ defmodule OrdersTest do
   alias Domain.{Orders, Repo}
   alias Ecto.Adapters.SQL.Sandbox
   alias Ecto.Date
- 
+
   use ExUnit.Case, async: true
 
   setup do
