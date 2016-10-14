@@ -12,6 +12,7 @@ defmodule Domain.User do
     field :email, :string, null: false
     field :password_hash, :string, null: false
     field :password, :string, virtual: true
+    has_many :orders, Domain.Order
 
     timestamps()
   end

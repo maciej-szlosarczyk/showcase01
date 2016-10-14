@@ -18,7 +18,7 @@ defmodule Domain.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :postgrex, :ecto],
+    [applications: [:logger, :postgrex, :ecto, :ex_machina],
      mod: {Domain, []}]
   end
 
@@ -39,6 +39,7 @@ defmodule Domain.Mixfile do
     # Databases
     [{:ecto, "~> 2.0"},
      {:postgrex, "~> 0.12.0"},
+     {:ex_machina, "~> 1.0", only: :test},
 
      # authentication and authorization
      {:comeonin, "~> 2.5"}] # Password hashing

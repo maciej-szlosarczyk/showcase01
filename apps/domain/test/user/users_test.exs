@@ -4,8 +4,6 @@ defmodule UsersTest do
   alias Domain.{Users, Repo}
   alias Ecto.Adapters.SQL.Sandbox
 
-  import Ecto.Query, only: [from: 2]
-
   use ExUnit.Case, async: true
 
   setup do
