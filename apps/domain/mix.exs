@@ -42,6 +42,9 @@ defmodule Domain.Mixfile do
      {:ex_machina, "~> 1.0", only: :test},
 
      # authentication and authorization
-     {:comeonin, "~> 2.5"}] # Password hashing
+     {:comeonin, "~> 2.5"}, # Password hashing
+
+     # Other libraries
+     {:timex, "~> 3.1"}] # Time and date made easy
   end
 end
