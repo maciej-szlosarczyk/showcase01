@@ -23,7 +23,7 @@ defmodule Showcase01.Mixfile do
   # Dependencies listed here are available only for this project
   # and cannot be accessed from applications inside the apps folder
   defp deps do
-    [{:credo, "~> 0.4.11", only: :dev},
+    [{:credo, "~> 0.5", only: :dev},
      {:coverex, "~> 1.4.10", only: :test}]
   end
 end
