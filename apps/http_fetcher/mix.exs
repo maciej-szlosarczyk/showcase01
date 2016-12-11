@@ -1,8 +1,8 @@
-defmodule Domain.Mixfile do
+defmodule HttpFetcher.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :domain,
+    [app: :http_fetcher,
      version: "0.1.0",
      build_path: "../../_build",
      config_path: "../../config/config.exs",
@@ -18,8 +18,8 @@ defmodule Domain.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :postgrex, :ecto],
-     mod: {Domain, []}]
+    [applications: [:logger],
+     mod: {HttpFetcher, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -36,12 +36,6 @@ defmodule Domain.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    # Databases
-    [{:ecto, "~> 2.0"},
-     {:postgrex, "~> 0.12.0"},
-     {:ex_machina, "~> 1.0", only: :test},
-
-     # authentication and authorization
-     {:comeonin, "~> 2.5"}] # Password hashing
+    [{:httpotion, "~> 3.0"}]
   end
 end
