@@ -1,0 +1,7 @@
+syncs:
+  showcase01-sync:
+    src: '.'
+    dest: '/opt/webapps/showcase01'
+    sync_host_port: 10872
+    sync_excludes: ['docker*', '.gitignore', '.git/*', 'README.md', '_build', 'deps', '*/*/node_modules/*', '.#*']
+    terminal_notifier: true

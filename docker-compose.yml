@@ -1,5 +1,9 @@
 version: "2"
 
+volumes:
+  showcase01-sync:
+    external: true
+
 services:
   pg:
     image: postgres:9.5

@@ -15,7 +15,6 @@ defmodule Web.AuthController do
 
   def sign_in_by_email_and_password(conn, email, given_password) do
     user = Users.find_by_params(email: email)
-
     cond do
       user && checkpw(given_password, user.password_hash) ->
         {:ok, sign_in(conn, user)}
