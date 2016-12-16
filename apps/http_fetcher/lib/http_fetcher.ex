@@ -11,6 +11,7 @@ defmodule HttpFetcher do
     children = [
       # Starts a worker by calling: HttpFetcher.Worker.start_link(arg1, arg2, arg3)
       # worker(HttpFetcher.Worker, [arg1, arg2, arg3]),
+      supervisor(Task.Supervisor, [[name: HttpFetcher.TaskSupervisor]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

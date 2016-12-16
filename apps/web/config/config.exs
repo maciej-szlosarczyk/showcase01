@@ -9,6 +9,9 @@ use Mix.Config
 config :web,
   namespace: Web
 
+config :web,
+  ecto_repos: []
+
 # Configures the endpoint
 config :web, Web.Endpoint,
   url: [host: "localhost"],
@@ -28,7 +31,6 @@ config :guardian, Guardian,
   verify_issuer: true,
   secret_key: "m4BFsHL8XI18/UGO8iP/5u/1XKMIKR36jtesOrs40H/znfMeqpJ+oBGZlWqJO+Wj",
   serializer: Web.GuardianSerializer
-
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

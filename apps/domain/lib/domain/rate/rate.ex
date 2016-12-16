@@ -8,6 +8,8 @@ defmodule Domain.Rate do
   schema "rates" do
     field :data, :map, null: false
     field :date, Ecto.Date, null: false
+
+    timestamps
   end
 
   def create_changeset(rate, params \\ %{}) do

@@ -1,4 +1,5 @@
 defmodule Domain.Repo.Migrations.AddRatesTable do
+  @moduledoc false
   use Ecto.Migration
 
   def change do

@@ -14,6 +14,10 @@ defmodule Domain.Rates do
     Repo.all(rates)
   end
 
+  def to_date(date) do
+    Timex.to_datetime(date)
+  end
+
   defp check_date(date) do
     {status, parsed_date} = Timex.parse(date, "%Y-%m-%d", :strftime)
 

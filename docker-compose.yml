@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+  pg:
+    image: postgres:9.5
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=showcase01_dev
+    ports:
+      - "5433:5432"
+
+  app:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    links:
+      - pg:pg
+    depends_on:
+      - pg
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=showcase01_dev
+      - POSTGRES_HOST=pg
+    command: mix phoenix.server
