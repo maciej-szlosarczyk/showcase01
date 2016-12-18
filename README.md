@@ -16,4 +16,3 @@ A test umbrella app written in Elixir, includes Phoenix as dependency.
    ```
    
 5. Run server with `mix phoenix.server`. You can also use `iex -S mix phoenix.server` to access the command line.
-

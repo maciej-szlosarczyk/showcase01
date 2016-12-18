@@ -58,5 +58,5 @@ defmodule OrdersTest do
     refute changeset.valid?
     assert changeset.required == [:base_currency, :target_currency, :amount,
                                   :end_date, :user_id]
-  end 
+  end
 end

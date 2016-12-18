@@ -18,7 +18,7 @@ defmodule Domain.Users do
   def find_by_params(params) do
     Repo.get_by!(User, params)
   end
- 
+
   def create_user!(params) do
     changeset = User.create_changeset(%User{}, params)
 
