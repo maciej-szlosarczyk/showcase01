@@ -38,4 +38,11 @@ defmodule OrderTest do
     changeset = Order.update_changeset(%Order{}, @invalid_attrs)
     refute changeset.valid?
   end
+
+  describe "Convert currencies to lowercase strings" do
+    test "Strings are converted" do
+      changeset = Order.create_changeset(%Order{}, @valid_attrs)
+      assert changeset.changes.target_currency == "gbp"
+    end
+  end
 end

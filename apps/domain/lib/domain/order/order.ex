@@ -1,10 +1,10 @@
 defmodule Domain.Order do
   @moduledoc false
 
-  @currency_choices ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK",
-                     "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR",
-                     "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN",
-                     "RON", "RUB", "SEK","SGD", "THB", "TRY", "USD", "ZAR"]
+  @currency_choices ["aud", "bgn", "brl", "cad", "chf", "cny", "czk", "dkk",
+                     "eur", "gbp", "hkd", "hrk", "huf", "idr", "ils", "inr",
+                     "jpy", "krw", "mxn", "myr", "nok", "nzd", "php", "pln",
+                     "ron", "rub", "sek", "sgd", "thb", "try", "usd", "zar"]
 
   use Ecto.Schema
   alias Ecto.Date
@@ -29,6 +29,7 @@ defmodule Domain.Order do
     order
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
                     :start_date, :user_id])
+    |> strings_to_lowercase
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:target_currency, currency_choices)
     |> set_start_date
@@ -40,6 +41,7 @@ defmodule Domain.Order do
     order
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
                     :start_date, :user_id])
+    |> strings_to_lowercase
     |> validate_inclusion(:base_currency, currency_choices)
     |> validate_inclusion(:base_currency, currency_choices)
     |> set_start_date
@@ -51,5 +53,19 @@ defmodule Domain.Order do
     {date, _} = :calendar.now_to_datetime(:os.timestamp)
     order
     |> put_change(:start_date, Date.cast!(date))
+  end
+
+  def strings_to_lowercase(order) do
+    base = get_change(order, :base_currency)
+    target = get_change(order, :target_currency)
+
+    case {base, target} do
+      {x, y} when is_bitstring(x) and is_bitstring(y) ->
+        order
+        |> put_change(:base_currency, String.downcase(x))
+        |> put_change(:target_currency, String.downcase(y))
+      {_, _} ->
+        order
+    end
   end
 end
