@@ -32,18 +32,21 @@ defmodule Domain.Rate do
   end
 
   def validate_rate_keys(changeset) do
-    validate_change(changeset, :data, fn(:data, data) ->
-      keys = Map.keys(data.rates)
-      if Enum.all?(
-            keys, fn(x) ->
-              Enum.member?(Domain.Order.currency_choices, Atom.to_string(x))
-            end
-          ) do
-        []
-      else
-        [data: "Rates cannot contain non-currency keys"]
-      end
-    end
+    validate_change(
+      changeset, :data, fn(:data, data) -> check_if_in_choices(:data, data) end
     )
+  end
+
+  defp check_if_in_choices(:data, data) do
+    keys = Map.keys(data.rates)
+    if Enum.all?(keys, fn(x) -> check_if_a_member(x) end) do
+      []
+    else
+      [data: "Rates cannot contain non-currency keys"]
+    end
+  end
+
+  defp check_if_a_member(x) do
+    Enum.member?(Domain.Order.currency_choices, Atom.to_string(x))
   end
 end
