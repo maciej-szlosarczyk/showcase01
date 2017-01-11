@@ -21,13 +21,8 @@ defmodule Domain.Rate do
   end
 
   def validate_base(changeset) do
-    validate_change(changeset, :data, fn(:data, data) ->
-      unless data.base == "eur" do
-        [data: "Base cannot be different than 'eur'"]
-      else
-       []
-      end
-    end
+    validate_change(
+      changeset, :data, fn(:data, data) -> equal_to_eur(:data, data) end
     )
   end
 
@@ -35,6 +30,14 @@ defmodule Domain.Rate do
     validate_change(
       changeset, :data, fn(:data, data) -> check_if_in_choices(:data, data) end
     )
+  end
+
+  defp equal_to_eur(:data, data) do
+    unless data.base == "eur" do
+      [data: "Base cannot be different than 'eur'"]
+    else
+      []
+    end
   end
 
   defp check_if_in_choices(:data, data) do
