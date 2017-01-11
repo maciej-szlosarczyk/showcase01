@@ -15,7 +15,7 @@ defmodule OrderTest do
 
   {new_date, _} = :calendar.now_to_datetime(:os.timestamp)
 
-  @valid_attrs %{base_currency: "EUR", target_currency: "GBP", amount: 1200,
+  @valid_attrs %{base_currency: "EUR", target_currency: "gbp", amount: 1200,
                  end_date: Date.cast!(new_date), user_id: 1}
   @invalid_attrs %{some_var: "I'm some variable, don't mind me."}
 
@@ -39,10 +39,10 @@ defmodule OrderTest do
     refute changeset.valid?
   end
 
-  describe "Convert currencies to lowercase strings" do
+  describe "Convert currencies to upercase strings" do
     test "Strings are converted" do
       changeset = Order.create_changeset(%Order{}, @valid_attrs)
-      assert changeset.changes.target_currency == "gbp"
+      assert changeset.changes.target_currency == "GBP"
     end
   end
 end

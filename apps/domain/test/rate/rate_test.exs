@@ -16,52 +16,52 @@ defmodule RateTest do
 
   alias Domain.Rate
 
-  @valid_attrs %{data: %{base: "eur", date: "2016-12-16",
-                        rates: %{aud: 1.4239, bgn: 1.9558, brl: 3.5081,
-                                cad: 1.396,chf: 1.0751, cny: 7.2635,
-                                czk: 27.021, dkk: 7.434, gbp: 0.8389,
-                                hkd: 8.1032, hrk: 7.536, huf: 312.45,
-                                idr: 13977.82, ils: 4.0425, inr: 70.7765,
-                                jpy: 123.38, krw: 1239.53, mxn: 21.2528,
-                                myr: 4.6715, nok: 9.0623,nzd: 1.4892,
-                                php: 52.193, pln: 4.42, ron: 4.5165,
-                                rub: 64.3017, sek: 9.789, sgd: 1.5065,
-                                thb: 37.413, try: 3.6601, usd: 1.0439,
-                                zar: 14.5876
+  @valid_attrs %{data: %{base: "EUR", date: "2016-12-16",
+                        rates: %{AUD: 1.4239, BGN: 1.9558, BRL: 3.5081,
+                                CAD: 1.396, CHF: 1.0751, CNY: 7.2635,
+                                CZK: 27.021, DKK: 7.434, GBP: 0.8389,
+                                HKD: 8.1032, HRK: 7.536, HUF: 312.45,
+                                IDR: 13977.82, ILS: 4.0425, INR: 70.7765,
+                                JPY: 123.38, KRW: 1239.53, MXN: 21.2528,
+                                MYR: 4.6715, NOK: 9.0623, NZD: 1.4892,
+                                PHP: 52.193, PLN: 4.42, RON: 4.5165,
+                                RUB: 64.3017, SEK: 9.789, SGD: 1.5065,
+                                THB: 37.413, TRY: 3.6601, USD: 1.0439,
+                                ZAR: 14.5876
                         }
                        },
                  date: Date.cast!("2016-12-16")
   }
 
   @invalid_base %{data: %{base: "not_eur", date: "2016-12-16",
-                          rates: %{aud: 1.4239, bgn: 1.9558, brl: 3.5081,
-                                   cad: 1.396,chf: 1.0751, cny: 7.2635,
-                                   czk: 27.021, dkk: 7.434, gbp: 0.8389,
-                                   hkd: 8.1032, hrk: 7.536, huf: 312.45,
-                                   idr: 13977.82, ils: 4.0425, inr: 70.7765,
-                                   jpy: 123.38, krw: 1239.53, mxn: 21.2528,
-                                   myr: 4.6715, nok: 9.0623,nzd: 1.4892,
-                                   php: 52.193, pln: 4.42, ron: 4.5165,
-                                   rub: 64.3017, sek: 9.789, sgd: 1.5065,
-                                   thb: 37.413, try: 3.6601, usd: 1.0439,
-                                   zar: 14.5876
+                          rates: %{AUD: 1.4239, BGN: 1.9558, BRL: 3.5081,
+                                   CAD: 1.396, CHF: 1.0751, CNY: 7.2635,
+                                   CZK: 27.021, DKK: 7.434, GBP: 0.8389,
+                                   HKD: 8.1032, HRK: 7.536, HUF: 312.45,
+                                   IDR: 13977.82, ILS: 4.0425, INR: 70.7765,
+                                   JPY: 123.38, KRW: 1239.53, MXN: 21.2528,
+                                   MYR: 4.6715, NOK: 9.0623, NZD: 1.4892,
+                                   PHP: 52.193, PLN: 4.42, RON: 4.5165,
+                                   RUB: 64.3017, SEK: 9.789, SGD: 1.5065,
+                                   THB: 37.413, TRY: 3.6601, USD: 1.0439,
+                                   ZAR: 14.5876
                           }
                          },
                   date: Date.cast!("2016-12-16")
   }
 
-    @invalid_keys %{data: %{base: "eur", date: "2016-12-16",
-                          rates: %{aud: 1.4239, bgn: 1.9558, brl: 3.5081,
-                                   cad: 1.396,chf: 1.0751, cny: 7.2635,
-                                   surprise: 27.021, dkk: 7.434, gbp: 0.8389,
-                                   hkd: 8.1032, hrk: 7.536, huf: 312.45,
-                                   idr: 13977.82, ils: 4.0425, inr: 70.7765,
-                                   jpy: 123.38, krw: 1239.53, mxn: 21.2528,
-                                   myr: 4.6715, nok: 9.0623,nzd: 1.4892,
-                                   php: 52.193, pln: 4.42, ron: 4.5165,
-                                   rub: 64.3017, sek: 9.789, sgd: 1.5065,
-                                   thb: 37.413, try: 3.6601, usd: 1.0439,
-                                   zar: 14.5876
+    @invalid_keys %{data: %{base: "EUR", date: "2016-12-16",
+                          rates: %{aud: 1.4239, BGN: 1.9558, BRL: 3.5081,
+                                   CAD: 1.396, CHF: 1.0751, CNY: 7.2635,
+                                   surprise: 27.021, DKK: 7.434, GBP: 0.8389,
+                                   HKD: 8.1032, HRK: 7.536, HUF: 312.45,
+                                   IDR: 13977.82, ILS: 4.0425, INR: 70.7765,
+                                   JPY: 123.38, KRW: 1239.53, MXN: 21.2528,
+                                   MYR: 4.6715, NOK: 9.0623, NZD: 1.4892,
+                                   PHP: 52.193, PLN: 4.42, RON: 4.5165,
+                                   RUB: 64.3017, SEK: 9.789, SGD: 1.5065,
+                                   THB: 37.413, TRY: 3.6601, USD: 1.0439,
+                                   ZAR: 14.5876
                           }
                          },
                   date: Date.cast!("2016-12-16")

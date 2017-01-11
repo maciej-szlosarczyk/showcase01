@@ -1,10 +1,10 @@
 defmodule Domain.Order do
   @moduledoc false
 
-  @currency_choices ["aud", "bgn", "brl", "cad", "chf", "cny", "czk", "dkk",
-                     "eur", "gbp", "hkd", "hrk", "huf", "idr", "ils", "inr",
-                     "jpy", "krw", "mxn", "myr", "nok", "nzd", "php", "pln",
-                     "ron", "rub", "sek", "sgd", "thb", "try", "usd", "zar"]
+  @currency_choices ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK",
+                     "EUR", "GBP", "HKD", "HRK", "HUF", "IDR", "ILS", "INR",
+                     "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PLN",
+                     "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"]
 
   use Ecto.Schema
   alias Ecto.Date
@@ -62,8 +62,8 @@ defmodule Domain.Order do
     case {base, target} do
       {x, y} when is_bitstring(x) and is_bitstring(y) ->
         order
-        |> put_change(:base_currency, String.downcase(x))
-        |> put_change(:target_currency, String.downcase(y))
+        |> put_change(:base_currency, String.upcase(x))
+        |> put_change(:target_currency, String.upcase(y))
       {_, _} ->
         order
     end
