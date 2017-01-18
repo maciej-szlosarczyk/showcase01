@@ -1,6 +1,8 @@
 defmodule Domain.Dates do
   @moduledoc false
 
+  alias Ecto.Date, as: Date
+
   def to_date(date) do
     date
     |> replace_if_needed
@@ -8,7 +10,7 @@ defmodule Domain.Dates do
     |> Enum.map(fn(x) -> String.to_integer(x) end)
     |> normalize_if_needed
     |> List.to_tuple
-    |> Ecto.Date.cast!
+    |> Date.cast!
   end
 
   def to_date(date, type) when type == :american do
@@ -19,16 +21,16 @@ defmodule Domain.Dates do
     |> normalize_if_needed
     |> un_americanize
     |> List.to_tuple
-    |> Ecto.Date.cast!
+    |> Date.cast!
   end
 
   defp replace_if_needed(string) do
-    case String.match?(string, ~r/\./) do
-      true ->
-        String.replace(string, ".", "-")
-      _    ->
-        true
+    a = if String.match?(string, ~r/\./) do
+      String.replace(string, ".", "-")
     end
+
+    # Return either the new string or the old one
+    a || string
   end
 
   defp normalize_if_needed([a, b, c]) do
@@ -44,6 +46,7 @@ defmodule Domain.Dates do
     [a, c, b]
   end
 
+  # Might be not needed, look to remove in the future
   defp check_date(date) do
     {status, parsed_date} = Timex.parse(date, "%Y-%m-%d", :strftime)
 

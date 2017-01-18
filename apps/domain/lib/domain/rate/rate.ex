@@ -3,6 +3,7 @@ defmodule Domain.Rate do
 
   use Ecto.Schema
   alias Ecto.Date
+  alias Domain.Order
   import Ecto.Changeset
 
   schema "rates" do
@@ -50,6 +51,6 @@ defmodule Domain.Rate do
   end
 
   defp check_if_a_member(x) do
-    Enum.member?(Domain.Order.currency_choices, Atom.to_string(x))
+    Enum.member?(Order.currency_choices, Atom.to_string(x))
   end
 end
