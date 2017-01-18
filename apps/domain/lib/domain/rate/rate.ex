@@ -33,7 +33,7 @@ defmodule Domain.Rate do
   end
 
   defp equal_to_eur(:data, data) do
-    unless data.base == "EUR" do
+    if data.base != "EUR" do
       [data: "Base cannot be different than 'eur'"]
     else
       []

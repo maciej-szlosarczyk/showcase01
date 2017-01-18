@@ -8,7 +8,7 @@ defmodule Domain.Order do
 
   use Ecto.Schema
   alias Ecto.Date
- import Ecto.Changeset
+  import Ecto.Changeset
 
   schema "orders" do
     field :base_currency, :string, null: false

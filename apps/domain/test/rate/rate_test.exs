@@ -1,8 +1,5 @@
 defmodule RateTest do
-  @moduledoc """
-  As you possibly know, I shouldn't be empty.
-  But I am not.
-  """
+  @moduledoc false
 
   alias Domain.Repo
   alias Ecto.Adapters.SQL.Sandbox
@@ -21,7 +18,7 @@ defmodule RateTest do
                                 CAD: 1.396, CHF: 1.0751, CNY: 7.2635,
                                 CZK: 27.021, DKK: 7.434, GBP: 0.8389,
                                 HKD: 8.1032, HRK: 7.536, HUF: 312.45,
-                                IDR: 13977.82, ILS: 4.0425, INR: 70.7765,
+                                IDR: 13_977.82, ILS: 4.0425, INR: 70.7765,
                                 JPY: 123.38, KRW: 1239.53, MXN: 21.2528,
                                 MYR: 4.6715, NOK: 9.0623, NZD: 1.4892,
                                 PHP: 52.193, PLN: 4.42, RON: 4.5165,
@@ -38,7 +35,7 @@ defmodule RateTest do
                                    CAD: 1.396, CHF: 1.0751, CNY: 7.2635,
                                    CZK: 27.021, DKK: 7.434, GBP: 0.8389,
                                    HKD: 8.1032, HRK: 7.536, HUF: 312.45,
-                                   IDR: 13977.82, ILS: 4.0425, INR: 70.7765,
+                                   IDR: 13_977.82, ILS: 4.0425, INR: 70.7765,
                                    JPY: 123.38, KRW: 1239.53, MXN: 21.2528,
                                    MYR: 4.6715, NOK: 9.0623, NZD: 1.4892,
                                    PHP: 52.193, PLN: 4.42, RON: 4.5165,
@@ -55,7 +52,7 @@ defmodule RateTest do
                                    CAD: 1.396, CHF: 1.0751, CNY: 7.2635,
                                    surprise: 27.021, DKK: 7.434, GBP: 0.8389,
                                    HKD: 8.1032, HRK: 7.536, HUF: 312.45,
-                                   IDR: 13977.82, ILS: 4.0425, INR: 70.7765,
+                                   IDR: 13_977.82, ILS: 4.0425, INR: 70.7765,
                                    JPY: 123.38, KRW: 1239.53, MXN: 21.2528,
                                    MYR: 4.6715, NOK: 9.0623, NZD: 1.4892,
                                    PHP: 52.193, PLN: 4.42, RON: 4.5165,

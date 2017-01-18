@@ -12,8 +12,6 @@ defmodule UsersTest do
 
   @valid_attrs %{email: "admin@test.com", first_name: "Admin",
                    last_name: "Test", password: "password"}
-  @invalid_attrs %{}
-
 
   describe "Success scenarios" do
     test "create a User with valid params" do

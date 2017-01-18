@@ -14,6 +14,7 @@ defmodule UserTest do
 
   @valid_attrs %{email: "admin@test.com", first_name: "Admin",
                  last_name: "Test", password: "password"}
+
   @invalid_attrs %{email: "I'm wrong"}
 
   test "create_changeset with valid attributes" do
