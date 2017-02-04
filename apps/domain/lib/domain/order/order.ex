@@ -30,8 +30,8 @@ defmodule Domain.Order do
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
                     :start_date, :user_id])
     |> strings_to_lowercase
-    |> validate_inclusion(:base_currency, currency_choices)
-    |> validate_inclusion(:target_currency, currency_choices)
+    |> validate_inclusion(:base_currency, currency_choices())
+    |> validate_inclusion(:target_currency, currency_choices())
     |> set_start_date
     |> validate_required([:base_currency, :target_currency, :amount, :end_date,
                          :user_id])
@@ -42,8 +42,8 @@ defmodule Domain.Order do
     |> cast(params, [:base_currency, :target_currency, :amount, :end_date,
                     :start_date, :user_id])
     |> strings_to_lowercase
-    |> validate_inclusion(:base_currency, currency_choices)
-    |> validate_inclusion(:base_currency, currency_choices)
+    |> validate_inclusion(:base_currency, currency_choices())
+    |> validate_inclusion(:base_currency, currency_choices())
     |> set_start_date
     |> validate_required([:base_currency, :target_currency, :amount, :end_date,
                          :user_id])

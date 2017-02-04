@@ -23,7 +23,7 @@ services:
     volumes_from:
       - container:showcase01-sync:rw
     ports:
-      - "4000:4000"
+      - "3333:4000"
     links:
       - pg:pg
     depends_on:

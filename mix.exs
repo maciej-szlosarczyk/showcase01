@@ -24,6 +24,7 @@ defmodule Showcase01.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [{:credo, "~> 0.5", only: :dev},
+     {:dialyxir, "~> 0.4", only: :dev, runtime: false},
      {:coverex, "~> 1.4.10", only: :test}]
   end
 end

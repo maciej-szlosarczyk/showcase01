@@ -30,5 +30,12 @@ defmodule DatesTest do
 
       assert(Dates.to_date(date, :american) == expected_date)
     end
+
+    test "Given a date, return the date for the first day of the week" do
+      date = Date.cast!({2011, 09, 10})
+      expected_date = Date.cast!({2011, 09, 4})
+
+      assert(Dates.wednesdize(date) == expected_date)
+    end
   end
 end

@@ -2,7 +2,6 @@ defmodule Domain.Rate do
   @moduledoc false
 
   use Ecto.Schema
-  alias Ecto.Date
   alias Domain.Order
   import Ecto.Changeset
 
@@ -10,7 +9,7 @@ defmodule Domain.Rate do
     field :data, :map, null: false
     field :date, Ecto.Date, null: false
 
-    timestamps
+    timestamps()
   end
 
   def create_changeset(rate, params \\ %{}) do

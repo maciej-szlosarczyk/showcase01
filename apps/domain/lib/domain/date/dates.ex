@@ -3,6 +3,7 @@ defmodule Domain.Dates do
 
   alias Ecto.Date, as: Date
 
+  @spec to_date(bitstring) :: %Ecto.Date{}
   def to_date(date) do
     date
     |> replace_if_needed
@@ -13,6 +14,7 @@ defmodule Domain.Dates do
     |> Date.cast!
   end
 
+  @spec to_date(bitstring, atom) :: %Ecto.Date{}
   def to_date(date, type) when type == :american do
     date
     |> replace_if_needed
@@ -24,6 +26,22 @@ defmodule Domain.Dates do
     |> Date.cast!
   end
 
+  @spec wednesdize(%Ecto.Date{}) :: %Ecto.Date{}
+  def wednesdize(date) do
+    {y, m, d} = Date.to_erl(date)
+    dow = :calendar.day_of_the_week({y, m, d})
+
+    wed = case d do
+            x when x >= dow ->
+              d - dow + 3
+            _ ->
+              "Cannot compute at the moment"
+          end
+
+    Date.cast!({y, m, wed})
+end
+
+  @spec replace_if_needed(bitstring) :: bitstring
   defp replace_if_needed(string) do
     a = if String.match?(string, ~r/\./) do
       String.replace(string, ".", "-")
@@ -33,6 +51,7 @@ defmodule Domain.Dates do
     a || string
   end
 
+  @spec normalize_if_needed(list) :: list
   defp normalize_if_needed([a, b, c]) do
     case [a, b, c] do
       [x, y, z] when z > y and z > x ->
@@ -42,6 +61,7 @@ defmodule Domain.Dates do
     end
   end
 
+  @spec un_americanize(list) :: list
   defp un_americanize([a, b, c]) do
     [a, c, b]
   end
