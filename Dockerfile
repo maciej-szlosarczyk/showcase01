@@ -14,7 +14,7 @@ WORKDIR /opt/webapps/showcase01
 # Run the mix setup
 COPY . .
 RUN mix local.rebar --force > /dev/null
-RUN mix local.hex --force > /dev/null 
+RUN mix local.hex --force > /dev/null
 RUN mix deps.get > /dev/null
 RUN mix deps.compile > /dev/null
 WORKDIR /opt/webapps/showcase01/apps/web

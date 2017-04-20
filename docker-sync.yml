@@ -1,9 +1,10 @@
+version: "2"
 syncs:
   showcase01-sync:
     src: '.'
     dest: '/opt/webapps/showcase01'
     sync_host_port: 10872
-    sync_excludes: ['.#*', 'docker', '.gitignore', '.git/', 'README.md', '_build/', 'deps/', '*/*/node_modules/']
-    watch_excludes: ['_build/', 'deps/']
+    sync_excludes: ['.#*', 'docker', '.gitignore', '.git/', 'README.md', '_build/*', 'deps/*', '*/*/node_modules/']
+    watch_excludes: ['_build/*', 'deps/', '.git/', '*/*/node_modules/']
     sync-args: '-v --copy-links --hard-links'
     terminal_notifier: true
